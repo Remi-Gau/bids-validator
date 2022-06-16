@@ -82,11 +82,14 @@ jobs:
       # https://stackoverflow.com/questions/5828324/update-git-submodule-to-latest-commit-on-origin
       - name: Update submodules
         run: |
+              set -e -u -x
               start_dir=$PWD
               if [ "${SUBMOD_TO_UPDATE}" = "*" ]; then
                   submodules=$(git submodule | awk '{print $2}')
+                  echo "updating all submodules"
               else
                   submodules=$(echo -e ${SUBMOD_TO_UPDATE} | sed "s/ /\n/g")
+                  echo "updating submodules ${SUBMOD_TO_UPDATE}"
               fi
               nb_submod=$(echo "${submodules}" | wc -l)
               echo -e "\nUPDATING ${nb_submod} SUBMODULES"
