@@ -21,7 +21,7 @@ jobs:
       run:
         working-directory: ./bids-validator
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
       - uses: denoland/setup-deno@v1.1.1
         with:
           deno-version: v1.x
